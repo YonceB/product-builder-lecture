@@ -4,43 +4,99 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f0f0f0;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
     text-align: center;
+    padding: 2rem;
 }
 
 .lotto-numbers {
     display: flex;
-    margin: 20px 0;
+    flex-direction: column; /* Arrange rows vertically */
+    align-items: center; /* Center the rows */
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.lotto-row {
+    display: flex;
+    gap: 1rem;
 }
 
 .lotto-number {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #fff;
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin: 0 5px;
-    font-size: 20px;
+    justify-content: center;
+    font-size: 1.5rem;
     font-weight: bold;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .generate-btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
-    font-size: 16px;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
-.generate-btn:hover {
+.theme-switcher {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+#theme-toggle-btn {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+/* Light Mode */
+body.light-mode {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.light-mode .lotto-number {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+.light-mode .generate-btn, .light-mode #theme-toggle-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.light-mode .generate-btn:hover {
     background-color: #45a049;
+}
+
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #333;
+    color: #f0f0f0;
+}
+
+.dark-mode .lotto-number {
+    background-color: #555;
+    color: #f0f0f0;
+    border: 1px solid #777;
+}
+
+.dark-mode .generate-btn, .dark-mode #theme-toggle-btn {
+    background-color: #666;
+    color: #f0f0f0;
+    border: 1px solid #888;
+    border-radius: 5px;
+}
+
+.dark-mode .generate-btn:hover {
+    background-color: #555;
 }

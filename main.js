@@ -1,28 +1,42 @@
-const lottoNumbersContainer = document.querySelector('.lotto-numbers');
+const lottoNumbersDiv = document.getElementById('lotto-numbers');
 const generateBtn = document.querySelector('.generate-btn');
+const themeToggleBtn = document.getElementById('theme-toggle-btn');
 
-function generateLottoNumbers() {
+function generateNumbers() {
+  // Clear previous numbers
+  lottoNumbersDiv.innerHTML = '';
+
+  // Generate 5 sets of numbers
+  for (let i = 0; i < 5; i++) {
+    const row = document.createElement('div');
+    row.classList.add('lotto-row');
+
     const numbers = new Set();
     while (numbers.size < 6) {
-        const randomNumber = Math.floor(Math.random() * 45) + 1;
-        numbers.add(randomNumber);
+      const randomNumber = Math.floor(Math.random() * 45) + 1;
+      numbers.add(randomNumber);
     }
-    return Array.from(numbers);
-}
 
-function displayNumbers(numbers) {
-    lottoNumbersContainer.innerHTML = '';
-    for (const number of numbers) {
-        const numberElement = document.createElement('div');
-        numberElement.classList.add('lotto-number');
-        numberElement.textContent = number;
-        lottoNumbersContainer.appendChild(numberElement);
+    // Sort and display the numbers in the row
+    for (const number of [...numbers].sort((a, b) => a - b)) {
+      const numberDiv = document.createElement('div');
+      numberDiv.classList.add('lotto-number');
+      numberDiv.textContent = number;
+      row.appendChild(numberDiv);
     }
+
+    lottoNumbersDiv.appendChild(row);
+  }
 }
 
-function handleGenerateClick() {
-    const numbers = generateLottoNumbers();
-    displayNumbers(numbers);
+function toggleTheme() {
+  document.body.classList.toggle('dark-mode');
+  document.body.classList.toggle('light-mode');
 }
 
-generateBtn.addEventListener('click', handleGenerateClick);
+generateBtn.addEventListener('click', generateNumbers);
+themeToggleBtn.addEventListener('click', toggleTheme);
+
+// Set initial theme and generate numbers on load
+document.body.classList.add('light-mode');
+generateNumbers(); // Generate numbers on initial load
