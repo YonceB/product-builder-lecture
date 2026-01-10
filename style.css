@@ -1,1 +1,75 @@
-/* Add styles here */
+body {
+  font-family: sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+  text-align: center;
+  padding: 2rem;
+}
+
+.lotto-numbers {
+  display: flex;
+  flex-direction: column; /* Arrange rows vertically */
+  align-items: center; /* Center the rows */
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.lotto-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.lotto-number {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#generate-btn {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.theme-switcher {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+#theme-toggle-btn {
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+/* Light Mode */
+body.light-mode {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.light-mode .lotto-number {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #333;
+  color: #f0f0f0;
+}
+
+.dark-mode .lotto-number {
+  background-color: #555;
+  color: #f0f0f0;
+  border: 1px solid #777;
+}
