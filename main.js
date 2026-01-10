@@ -37,6 +37,5 @@ function toggleTheme() {
 generateBtn.addEventListener('click', generateNumbers);
 themeToggleBtn.addEventListener('click', toggleTheme);
 
-// Set initial theme and generate numbers on load
+// Set initial theme
 document.body.classList.add('light-mode');
-generateNumbers(); // Generate numbers on initial load
